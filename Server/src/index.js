@@ -17,7 +17,7 @@ app.post('/', (req, res) => { //chiamata quando viene fatta richiesta post
     //ci sarà esegui client
     var spawn = require('child_process').spawn;
     // Create a child process
-    var child = spawn('client' , ["-s", req.body.serverip]);//per passare parametri
+    var child = spawn('./client' , ["-s", req.body.serverip]);//per passare parametri
 
     child.stdout.on('data',
         function (data) {
@@ -40,3 +40,6 @@ app.listen(port, () => {
 })
 
 //axios.post("urlAPI", body)
+
+
+
