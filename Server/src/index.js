@@ -18,11 +18,11 @@ app.post('/', (req, res) => { //chiamata quando viene fatta richiesta post
     //ci sarà esegui client
     var spawn = require('child_process').spawn;
     // Create a child process
-    var child = spawn('./client' , ["-s", req.body.serverIp]);//per passare parametri
+    var child = spawn('./client' , ["-s", req.body.serverIp, "-m", req.body.pNum]);//per passare parametri
 
     child.stdout.on('data',
         function (data) {
-            console.log('ls command output: ' + data);
+            console.log('client command output: ' + data);
         });
     child.stderr.on('data', function (data) {
         //throw errors
