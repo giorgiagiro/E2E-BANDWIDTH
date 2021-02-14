@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 
 const bodyParser = require('body-parser');
+const { spawnSync } = require('child_process');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -17,7 +18,7 @@ app.post('/', (req, res) => { //chiamata quando viene fatta richiesta post
     //ci sarà esegui client
     var spawn = require('child_process').spawn;
     // Create a child process
-    var child = spawn('./client' , ["-s", req.body.serverip]);//per passare parametri
+    var child = spawn('./client' , ["-s", req.body.serverIp]);//per passare parametri
 
     child.stdout.on('data',
         function (data) {
@@ -32,6 +33,8 @@ app.post('/', (req, res) => { //chiamata quando viene fatta richiesta post
         console.log('child process exited with code ' + code);
     });
 
+
+    
     res.status(200).send();
 })
 
