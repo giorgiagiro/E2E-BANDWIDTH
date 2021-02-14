@@ -26,12 +26,14 @@ app.post('/', (req, res) => { //chiamata quando viene fatta richiesta post
         });
     child.stderr.on('data', function (data) {
         //throw errors
-        console.log('stderr: ' + data);
+        console.log('latenza: ' + data.slice(",")[0]);
+
     });
 
     child.on('close', function (code) {
         console.log('child process exited with code ' + code);
     });
+
 
 
     
